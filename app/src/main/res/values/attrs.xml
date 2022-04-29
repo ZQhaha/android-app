@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WaveView">
+        <attr name="wave_title" format="string"/>
+        <!--最大值 默认为20，数据为-20 ~ 20-->
+        <attr name="max_value" format="integer" />
+        <!--波形图折线的线宽-->
+        <attr name="wave_line_stroke_width" format="integer" />
+        <!--波形图折线的颜色-->
+        <attr name="wave_line_color" format="string" />
+        <!--背景网格图的颜色-->
+        <attr name="grid_line_color" format="string" />
+        <!--背景颜色，默认为黑-->
+        <attr name="wave_background" format="string"/>
+        <!--背景网格是否可见-->
+        <attr name="grid_visible" format="boolean" />
+    </declare-styleable>
+</resources>
