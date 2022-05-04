@@ -2,11 +2,9 @@
     <string name="app_name">My Application</string>
     <string name="editMessage">输入信息</string>
     <string name="button_send">SEND</string>
-    <string name="model_path">models/zq</string>
-    <string name="model_name">model.nb</string>
+    <string name="model_name">model.pt</string>
     <string name="button_jump">Jump</string>
     <string name="start">开始预测</string>
     <string name="esc">结束预测</string>
     <string name="out_view">等待输出</string>
 </resources>
-

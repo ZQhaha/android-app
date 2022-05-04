@@ -6,26 +6,15 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import java.util.Arrays;
 
-/**
- * @Description: 波形图绘制控件
- * @Author: GiftedCat
- * @Date: 2021-01-01
- */
 public class WaveView extends View {
 
     private final String NAMESPACE = "http://schemas.android.com/apk/res-auto";
-    //常规绘制模式 不断往后推的方式
-    public static int NORMAL_MODE = 0;
-    //循环绘制模式
-    public static int LOOP_MODE = 1;
     //宽高
     private float mWidth = 0, mHeight = 0;
     //网格画笔
@@ -133,7 +122,6 @@ public class WaveView extends View {
             mWavePaint[j].setStyle(Paint.Style.STROKE);
             mWavePaint[j].setColor(waveLineColor[j]);
             mWavePaint[j].setStrokeWidth(WAVE_LINE_STROKE_WIDTH);
-            /** 抗锯齿效果*/
             mWavePaint[j].setAntiAlias(true);
         }
         mPath = new Path();
@@ -143,14 +131,11 @@ public class WaveView extends View {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        /** 获取控件的宽高*/
         mWidth = getMeasuredWidth();
         mHeight = getMeasuredHeight();
 
-        /** 根据网格的单位长宽，获取能绘制网格横线和竖线的数量*/
         gridHorizontalNum = (int) (mHeight / GRID_WIDTH);
         gridVerticalNum = (int) (mWidth / GRID_WIDTH);
-        /** 根据线条长度，最多能绘制多少个数据点*/
         row = 200;//(int) (mWidth / WAVE_LINE_WIDTH);
         WAVE_LINE_WIDTH = (int) mWidth / 200 + 1;
         dataArray = new float[3][row];
@@ -159,11 +144,9 @@ public class WaveView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        /** 绘制网格*/
         if (gridVisible) {
             drawGrid(canvas);
         }
-        /** 绘制折线*/
         drawWaveLineNormal(canvas);
         draw_index += 1;
         if (draw_index >= row) {
@@ -176,9 +159,8 @@ public class WaveView extends View {
     private void drawWaveLineNormal(Canvas canvas) {
         drawPathFromDatas(canvas, 0, row - 1);
         for (int j = 0; j < 3; j++) {
-            for (int i = 0; i < row - draw_point_length; i++) {
-                dataArray[j][i] = dataArray[j][i + draw_point_length];
-            }
+            if (row - draw_point_length >= 0)
+                System.arraycopy(dataArray[j], 0 + draw_point_length, dataArray[j], 0, row - draw_point_length);
         }
     }
 
@@ -304,5 +286,4 @@ public class WaveView extends View {
     public void setWaveLineWidth(int width) {
         this.WAVE_LINE_WIDTH = width;
     }
-
 }
