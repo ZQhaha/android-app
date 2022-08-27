@@ -7,4 +7,7 @@
     <string name="start">开始预测</string>
     <string name="esc">结束预测</string>
     <string name="out_view">等待输出</string>
+    <string name="libpytorch_jni_lite">https://gitee.com/mydreamy/so-file/raw/master/x86/libpytorch_jni_lite.so</string>
+    <string name="libfbjni">https://gitee.com/mydreamy/so-file/raw/master/x86/libfbjni.so</string>
+    <string name="libcxx_shared">https://gitee.com/mydreamy/so-file/raw/master/x86/libc++_shared.so</string>
 </resources>

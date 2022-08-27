@@ -7,4 +7,4 @@
 
 ## 效果图
 
-<img src="show.gif" alt="show" style="zoom: 33%;" />
+<img src="show.gif" alt="show" style="zoom: 80%;" />

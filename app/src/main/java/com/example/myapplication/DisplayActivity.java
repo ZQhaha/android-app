@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -54,6 +56,7 @@ public class DisplayActivity extends AppCompatActivity {
                 }
 
             }
+
             @Override
             public void onAccuracyChanged(Sensor sensor, int i) {
                 Log.d(TAG, "onAccuracyChanged:" + sensor.getType() + "->" + i);
